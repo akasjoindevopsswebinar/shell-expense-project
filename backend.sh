@@ -1,5 +1,8 @@
 source common.sh
 
+app_dir=/app
+component=backend
+
 Print_Task_Heading
 dnf module disable nodejs -y
 dnf module enable nodejs:20 -y
