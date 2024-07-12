@@ -22,4 +22,4 @@ systemctl enable backend
 systemctl start backend
 
 dnf install mysql -y 
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pExpenseApp@1 < /app/schema/backend.sql 
+mysql -h 172.31.89.89 -uroot -pExpenseApp@1 < /app/schema/backend.sql 
