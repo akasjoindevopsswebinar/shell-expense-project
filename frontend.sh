@@ -1,16 +1,19 @@
+source common.sh
 
+app_dir=/usr/share/nginx/html/
+component=frontend
+
+Print_Task_Heading "Set Nginx"
 dnf install nginx -y 
+Check_Status $?
 
-systemctl enable nginx 
-systemctl start nginx 
-
+Print_Task_Heading "Copy"
 cp expense.conf /etc/nginx/default.d/expense.conf
+Check_Status $?
 
-rm -rf /usr/share/nginx/html/* 
+App_Prereq
 
-curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip 
-
-cd /usr/share/nginx/html 
-unzip /tmp/frontend.zip
-
+Print_Task_Heading "Restart Nginx"
+systemctl enable nginx 
 systemctl restart nginx 
+Check_Status $?
